@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youyi Cup Entry - The Jeemaa Intelligent Platform</title>
+    <style>
+        /* --- 1. Global Settings --- */
+        body, h1, h2, h3, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 2. Header (Blue) --- */
+        header {
+            background-color: #0033A0; /* Deep Blue */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* --- 3. Container Layout --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* --- 4. Main Article Area (Left) --- */
+        .article-content {
+            flex: 3;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid #CE1126; /* Red Accent */
+        }
+
+        /* Text Styles */
+        .intro-text {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .section-block {
+            margin-bottom: 35px;
+        }
+
+        /* H2 Titles: Blue Background + White Text */
+        h2 {
+            background-color: #0033A0; 
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 6px rgba(0,51,160,0.2);
+            border-left: 5px solid #CE1126; /* Red Left Border */
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: #0033A0; /* Blue Text */
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Summary Block */
+        .summary-block {
+            background-color: #f0f4ff; /* Very Light Blue */
+            border-left: 5px solid #0033A0;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* --- 5. Sidebar (Right) --- */
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e1e1e1;
+            border-top: 3px solid #0033A0;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Audio Player */
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+            margin-top: 5px;
+        }
+
+        /* Link Button */
+        .link-btn {
+            display: block;
+            background-color: #fff;
+            color: #0033A0;
+            text-align: center;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #0033A0;
+            font-weight: bold;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link-btn:hover {
+            background-color: #0033A0;
+            color: #fff;
+        }
+
+        /* Disclaimer Text */
+        .footer-info {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            color: #CE1126;
+            font-weight: bold;
+        }
+
+        /* --- 6. Mobile Responsiveness --- */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column-reverse;
+                padding: 15px;
+            }
+            .article-content, .sidebar {
+                width: 100%;
+                flex: none;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #eee;
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Jeemaa Intelligent Platform</h1>
+        <p>Youyi Cup Contestant Entry</p>
+    </header>
+
+    <div class="container">
+
+        <article class="article-content">
+            
+            <p class="intro-text">
+                The Jeemaa Intelligent Area and Country Studies Platform is an integrated intelligent platform designed to support teaching, research, and talent cultivation in area and country studies. It brings together teaching management, knowledge learning, research training, and academic output within a unified digital environment, enabling more efficient and structured teaching and research practices.
+            </p>
+
+            <div class="section-block">
+                <h2>Intelligent Information Collection</h2>
+                <h3>Comprehensive Monitoring of Global Information Sources</h3>
+                <p>
+                    The platform supports user-defined keyword configuration and utilizes distributed web crawling technologies together with authoritative data interfaces. It enables real-time monitoring and early warning of public opinion across diverse sources, including global think tanks, mainstream media, and academic journals. This helps users systematically track regional developments and emerging trends.
+                </p>
+            </div>
+
+            <div class="section-block">
+                <h2>Deep Information Processing</h2>
+                <h3>From Information Access to Actionable Insights</h3>
+                <p>
+                    By applying natural language processing (NLP) and large language model technologies, the platform provides multilingual translation, sentiment analysis, opinion extraction, key point summarization, and bias detection. These functions significantly improve the efficiency and depth of information analysis and interpretation.
+                </p>
+            </div>
+
+            <div class="section-block">
+                <h2>Research Process Management</h2>
+                <h3>End-to-End, Traceable Research Workflows</h3>
+                <p>
+                    The platform offers full-process online management of research activities, covering data collection, note organization, tool usage, and report writing. Research processes are traceable throughout their lifecycle, supporting collaborative work and enabling the long-term accumulation of structured research knowledge assets.
+                </p>
+            </div>
+
+            <div class="section-block">
+                <h2>Research Capability Cultivation</h2>
+                <h3>Learning Research Methods Through Practice</h3>
+                <p>
+                    Through task-oriented methodological guidance, simulation-based training, and continuous process feedback, the platform supports users in learning and applying area and country studies research methods in real research scenarios. This approach contributes to the systematic enhancement of users’ research capability.
+                </p>
+            </div>
+
+            <div class="section-block">
+                <h2>Human-Machine Collaborative Output</h2>
+                <h3>Efficient and Flexible Research Content Generation</h3>
+                <p>
+                    Based on selected research topics, the platform can assist in generating report outlines, literature reviews, and initial drafts. Researchers retain full control over content editing and refinement, enabling effective human–machine collaboration that improves both research efficiency and output quality.
+                </p>
+            </div>
+
+            <div class="section-block">
+                <h2>Platform Vision and Educational Value</h2>
+                <h3>Empowering Teaching and Research in Area and Country Studies</h3>
+                <p>
+                    Through technology-driven innovation and research process optimization, the platform aims to comprehensively enhance teaching and research efficiency in area and country studies. It supports university foreign language departments and research institutes in curriculum development and course implementation aligned with talent cultivation goals. The platform also assists students in acquiring regional knowledge, mastering research methodologies, and strengthening their ability to deliver high-quality research outcomes.
+                </p>
+            </div>
+
+            <div class="summary-block">
+                <h3>Summary</h3>
+                <p>
+                    The Jeemaa Intelligent Area and Country Studies Platform is a comprehensive tool designed to enhance teaching, research, and talent development in area and country studies. By integrating intelligent information collection, deep information processing, and streamlined research process management, the platform empowers users to achieve efficient, high-quality research outcomes. Its collaborative human-machine output capabilities further improve research efficiency and overall quality.
+                </p>
+            </div>
+
+        </article>
+
+        <aside class="sidebar">
+            
+            <div class="card">
+                <div class="card-title">Audio Introduction</div>
+                <audio controls>
+                    <source src="speech.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Reference Link</div>
+                <a href="https://www.bilibili.com/video/BV1QgkNBuEjF" target="_blank" class="link-btn">
+                    🔗 View Related Video
+                </a>
+            </div>
+
+            <div class="card" style="border:none; box-shadow:none; background:transparent;">
+                <div class="footer-info">
+                    <p>This is the entry website for the <span class="highlight">"Youyi Cup"</span> contestant.</p>
+                    <p>It is for competition display purposes only.</p>
+                    <p>Thank you to the organizing committee.</p>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Youyi Cup Contestant Entry
+    </footer>
+
+</body>
+</html>
