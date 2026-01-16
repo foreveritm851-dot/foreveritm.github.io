@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>“优译杯”参赛作品展示</title>
+    <style>
+        /* --- 1. 全局基础 --- */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f2f5; /* 浅灰底色衬托白纸 */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 2. 顶部导航 (蓝) --- */
+        header {
+            background-color: #0033A0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        /* --- 3. 布局容器 (核心修改) --- */
+        .container {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px; /* 页面加宽，为了更好看PDF */
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            gap: 25px; /* 左右两栏的间距 */
+            align-items: flex-start; /* 顶部对齐 */
+        }
+
+        /* --- 左侧主区域 (PDF) --- */
+        .main-content {
+            flex: 3; /* 占据 3/4 的宽度 */
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #e1e1e1;
+            min-height: 800px; /* 保证PDF可视区域够大 */
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 850px; /* PDF 高度 */
+            border: none;
+        }
+
+        /* --- 右侧侧边栏 (音频+信息) --- */
+        .sidebar {
+            flex: 1; /* 占据 1/4 的宽度 */
+            min-width: 280px; /* 防止太窄 */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky; /* 页面滚动时侧边栏吸顶 */
+            top: 20px;
+        }
+
+        /* 侧边栏卡片样式 */
+        .side-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid #0033A0; /* 蓝色顶条 */
+        }
+
+        .side-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 4px solid #CE1126; /* 红色左条 */
+        }
+
+        /* 音频播放器样式 */
+        audio {
+            width: 100%;
+            height: 35px;
+            outline: none;
+        }
+
+        /* 链接按钮样式 */
+        .link-btn {
+            display: block;
+            background-color: #f8f9fa;
+            color: #0033A0;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px dashed #0033A0;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .link-btn:hover {
+            background-color: #0033A0;
+            color: #fff;
+            border-style: solid;
+        }
+
+        /* 说明文字样式 */
+        .info-text {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #CE1126;
+            font-weight: bold;
+        }
+
+        /* --- 响应式调整 --- */
+        /* 手机端自动变为上下排列 */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column-reverse; /* 手机上把重要内容放上面 */
+            }
+            .main-content, .sidebar {
+                width: 100%;
+                flex: none;
+            }
+            /* 手机端PDF稍微矮一点 */
+            .pdf-frame {
+                height: 500px;
+            }
+            /* 手机端侧边栏不需要吸顶 */
+            .sidebar {
+                position: static;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+            background-color: #e9e9e9;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>“优译杯”参赛选手作品网站</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="main-content">
+            <iframe class="pdf-frame" src="文档原文.pdf#toolbar=0&view=FitH"></iframe>
+        </div>
+
+        <aside class="sidebar">
+            
+            <div class="side-card">
+                <div class="side-title">音频演示</div>
+                <audio controls>
+                    <source src="speech.wav" type="audio/wav">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+
+            <div class="side-card">
+                <div class="side-title">相关链接</div>
+                <a href="https://www.example.com" target="_blank" class="link-btn">
+                    🔗 点击访问参考网页
+                </a>
+            </div>
+
+            <div class="side-card" style="border-top-color: #CE1126;"> <div class="side-title" style="border-left-color: #0033A0;">作品声明</div>
+                <div class="info-text">
+                    <p>这是<span class="highlight">“优译杯”</span>参赛选手的作品网站，没有其他用途。</p>
+                    <br>
+                    <p>详细制作内容见左侧作品 PPT。</p>
+                    <br>
+                    <p style="text-align:right;">感谢组织人员。</p>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        &copy; 2024 Youyi Cup Contestant Entry
+    </footer>
+
+</body>
+</html>
