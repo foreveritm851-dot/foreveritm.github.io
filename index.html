@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeemaa Platform | Tech Entry</title>
+    <style>
+        /* --- 1. Modern Tech Variables & Reset --- */
+        :root {
+            --primary-blue: #4a90e2;
+            --secondary-blue: #6ba3e8;
+            --accent-teal: #4db8c4;
+            --bg-dark: #1a1a2e;
+            --bg-panel: rgba(26, 26, 46, 0.9);
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #333;
+        }
+
+        body, h1, h2, h3, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* --- 2. Clean Header --- */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            border-bottom: 1px solid var(--primary-blue);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        header p {
+            color: var(--secondary-blue);
+            font-size: 0.85rem;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 3. Layout --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- 4. Modern Panel Styles --- */
+        .tech-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            position: relative;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content {
+            flex: 3;
+        }
+
+        /* Text Styling */
+        .intro-text {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 35px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 15px;
+            line-height: 1.7;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        h3 {
+            color: var(--accent-teal);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: var(--text-light);
+        }
+
+        /* Summary Box */
+        .summary-block {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 30px;
+            color: var(--text-light);
+            border-radius: 6px;
+            background: rgba(40, 40, 60, 0.5);
+        }
+
+        /* --- 5. Sidebar --- */
+        .sidebar {
+            flex: 1;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .side-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Simplified Radar --- */
+        .radar-container {
+            width: 100%;
+            height: 120px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, rgba(0,0,0,0) 70%);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+
+        .radar-grid {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(74, 144, 226, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 144, 226, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .radar-scan {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(74, 144, 226, 0.3) 0%, transparent 50%);
+            animation: scan 4s linear infinite;
+            border-bottom: 1px solid var(--primary-blue);
+        }
+
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        .radar-text {
+            position: absolute;
+            color: var(--primary-blue);
+            font-size: 0.7rem;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(26, 26, 46, 0.8);
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        /* --- Digital Human Image --- */
+        .cover-img {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            filter: brightness(0.9) contrast(100%);
+            margin-bottom: 15px;
+            display: block;
+            border-radius: 6px;
+        }
+
+        /* --- Modern Button --- */
+        .tech-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-btn:hover {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        /* Audio Player Customization */
+        audio {
+            width: 100%;
+            height: 35px;
+            filter: invert(1) grayscale(1);
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        /* Footer Info */
+        .footer-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .container { flex-direction: column-reverse; }
+            .article-content, .sidebar { width: 100%; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(26, 26, 46, 0.95);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <header>
+        <h1>Jeemaa Intelligent Platform</h1>
+        <p>System Status: Online // Youyi Cup Entry</p>
+    </header>
+
+    <div class="container">
+
+        <article class="article-content tech-panel">
+            <p class="intro-text">
+                The Jeemaa Intelligent Area and Country Studies Platform is an integrated intelligent platform designed to support teaching, research, and talent cultivation through advanced technological solutions.
+            </p>
+
+            <div class="section-block">
+                <h2>01 Intelligent Collection</h2>
+                <h3>Global Monitoring Grid</h3>
+                <p>The platform supports user-defined keyword configuration and utilizes distributed web crawling technologies together with authoritative data interfaces. It enables real-time monitoring and early warning of public opinion across diverse sources, providing comprehensive data coverage for research purposes.</p>
+            </div>
+
+            <div class="section-block">
+                <h2>02 Deep Processing</h2>
+                <h3>NLP Core Analysis</h3>
+                <p>By applying natural language processing (NLP) and large language model technologies, the platform provides multilingual translation, sentiment analysis, opinion extraction, key point summarization, and bias detection. These capabilities enable researchers to derive meaningful insights from complex data sets.</p>
+            </div>
+
+            <div class="section-block">
+                <h2>03 Process Management</h2>
+                <h3>Workflow Protocol</h3>
+                <p>The platform offers full-process online management of research activities, covering data collection, note organization, tool usage, and report writing. Research processes are traceable throughout their lifecycle, ensuring transparency and reproducibility in academic work.</p>
+            </div>
+
+            <div class="section-block">
+                <h2>04 Capability Cultivation</h2>
+                <h3>Simulation Training</h3>
+                <p>Through task-oriented methodological guidance, simulation-based training, and continuous process feedback, the platform supports users in learning and applying research methods in real research scenarios. This approach fosters the development of critical research skills and methodological proficiency.</p>
+            </div>
+
+            <div class="section-block">
+                <h2>05 Co-Pilot Output</h2>
+                <h3>Human-Machine Link</h3>
+                <p>Based on selected research topics, the platform can assist in generating report outlines and drafts. Researchers retain full control over content editing, enabling effective human–machine collaboration that enhances productivity while maintaining academic integrity.</p>
+            </div>
+
+            <div class="summary-block">
+                <h3>System Summary</h3>
+                <p>The Jeemaa Intelligent Platform integrates intelligent collection, deep processing, and process management to empower users. By combining advanced technologies with user-centric design, it creates a comprehensive ecosystem that supports all phases of academic research and talent development.</p>
+            </div>
+        </article>
+
+        <aside class="sidebar">
+
+            <div class="tech-panel">
+                <div class="side-title">AUDIO LOG</div>
+                <audio controls>
+                    <source src="speech.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="tech-panel">
+                <div class="side-title">SYSTEM STATUS</div>
+                
+                <div class="radar-container">
+                    <div class="radar-grid"></div>
+                    <div class="radar-scan"></div>
+                    <div class="radar-text">SYSTEM ACTIVE</div>
+                </div>
+
+                <img src="数字人播报.png" alt="Digital Avatar" class="cover-img">
+
+                <a href="https://www.bilibili.com/video/BV1QgkNBuEjF" target="_blank" class="tech-btn">
+                    ACCESS VIDEO FEED
+                </a>
+            </div>
+
+            <div class="footer-info">
+                <p>[SYSTEM NOTICE]</p>
+                <p>Entry for <span style="color:var(--primary-blue)">"Youyi Cup"</span></p>
+                <p>Display purposes only.</p>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        &copy; 2026 JEEMAA CORP // YOUYI CUP
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() * 1.5) - 0.75;
+                this.speedY = (Math.random() * 1.5) - 0.75;
+                // Soft blue colors
+                this.color = `rgba(${74 + Math.random() * 30}, ${144 + Math.random() * 30}, ${226 + Math.random() * 30}, ${0.6 + Math.random() * 0.4})`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < 50; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                // Connections
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(74, 144, 226, ${0.1 * (1 - distance/120)})`;
+                        ctx.lineWidth = 0.3;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+    </script>
+</body>
+</html>
